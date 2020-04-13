@@ -12,19 +12,19 @@ We’ll be covering
 
 ## Setup Project
 
-#### 1. Setup environment
-  ##### 1.1 Change current directory to your project
+### 1. Setup environment
+  #### 1.1 Change current directory to your project
   ```bash
   cd [your-project-directory]
   ```
 
-  ##### 1.2 Create zsh_history_dev_env_docker file to store the zsh command history.
+  #### 1.2 Create zsh_history_dev_env_docker file to store the zsh command history.
   The command history will be re-useable for other docker container (just run once).
   ```bash
   touch $HOME/.zsh_history_dev_env_docker
   ```
 
-  ##### 1.3 Create docker container for development environment (Ubuntu 18.04, NodeJS, Ruby, zsh, fzf)
+  #### 1.3 Create docker container for development environment (Ubuntu 18.04, NodeJS, Ruby, zsh, fzf)
   ```bash
   docker run -p 8000:8000 -p 8080:8080 \
     -it -d --name=real-world-vue-js \
@@ -34,16 +34,45 @@ We’ll be covering
     khoachilang/dev_env:latest
   ```
 
-  ##### 1.4 Install Vue CLI
+  #### 1.4 Install Vue CLI
   ```bash
   docker exec -it real-world-vue-js zsh
   npm install -g --unsafe-perm @vue/cli && npm install -g --unsafe-perm @vue/cli-service-global
   npm install -g @vue/cli && npm install -g @vue/cli-service-global
   ```
 
-  ##### 1.4 Show Vue information
+  #### 1.4 Show Vue information
   ```bash
   vue --version
   vue info
   vue create -h
   ```
+
+### 2. Project setup
+  #### 2.1 Install node packages
+  ```
+  npm install
+  ```
+
+  #### 2.2 Compiles and hot-reloads for development
+  ```
+  npm run serve
+  ```
+
+  #### 2.3 Compiles and minifies for production
+  ```
+  npm run build
+  ```
+
+  #### 2.4 Run your unit tests
+  ```
+  npm run test:unit
+  ```
+
+  #### 2.5 Lints and fixes files
+  ```
+  npm run lint
+  ```
+
+  ### 2.6 Customize configuration
+  See [Configuration Reference](https://cli.vuejs.org/config/).
