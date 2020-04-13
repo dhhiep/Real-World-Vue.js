@@ -90,7 +90,7 @@ npm run test:unit
 npm run lint
 ```
 
-### 2.6 Customize configuration
+#### 2.6 Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
