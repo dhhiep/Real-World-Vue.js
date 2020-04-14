@@ -102,7 +102,13 @@ npm run test:unit
 npm run lint
 ```
 
-#### 2.6 Customize configuration
+#### 2.6 Start mock API Server for Lesson 9: API Calls with Axios
+
+```bash
+json-server --watch db.json
+```
+
+#### 2.7 Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
