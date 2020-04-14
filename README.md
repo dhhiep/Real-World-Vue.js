@@ -13,6 +13,18 @@ We’ll be covering
 - Vue Components
 - API calls with Axios
 
+## Table of Contents
+
+1. Intro to Real World Vue
+2. Vue CLI 3 - Creating our Project
+3. Optimizing your Editor
+4. Vue Router Basics
+5. Dynamic Routing and History Mode
+6. Single File Vue Components
+7. Global Components
+8. Slots
+9. API calls with Axios
+
 ## Setup Project
 
 ### 1. Setup environment
