@@ -1,7 +1,11 @@
 # Real-World-Vue.js
 
-Learn the Real World Vue.js course at https://www.vuemastery.com/courses/real-world-vue-js
-In this course, I’ll be learn about VueJS, how to build a production-level single page application (SPA) with Vue.js.
+Follow the courses:
+
+- Real World Vue.js course at [https://www.vuemastery.com/courses/real-world-vue-js](https://www.vuemastery.com/courses/real-world-vue-js)
+- Mastering Vuex course at [https://www.vuemastery.com/courses/mastering-vuex](https://www.vuemastery.com/courses/mastering-vuex)
+
+In these courses, I’ll be learn about VueJS, how to build a production-level single page application (SPA) with Vue.js.
 
 ## Learn best practices
 
@@ -11,7 +15,10 @@ We’ll be covering
 - Vue CLI: everything you need to know
 - Vue Router
 - Vue Components
+- Base Component for Reuse
 - API calls with Axios
+- Vuex (State, Mutations, Modules, Getters, Actions)
+- Data filter
 
 ## Table of Contents
 
