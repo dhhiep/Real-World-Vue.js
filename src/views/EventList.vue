@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Events for {{ user.name }}</h1>
-    <EventCard v-for="event in event.events" :key="event.id" :event="event" />
+    <EventCard v-for="event in events" :key="event.id" :event="event" />
 
     <template v-if="page > 1">
       <router-link :to="{ name: 'event', query: { page: page - 1 } }"
@@ -34,12 +34,10 @@ export default {
       return 5
     },
     hasNextPage() {
-      return this.event.eventsTotal > this.perPage * this.page
+      return this.eventsTotal > this.perPage * this.page
     },
-    ...mapState({
-      user: state => state.user.user
-    }),
-    ...mapState(['event'])
+    ...mapState('user', ['user']),
+    ...mapState('event', ['events', 'eventsTotal'])
   },
   // methods: mapActions('event', ['fetchEvents']),
   created() {

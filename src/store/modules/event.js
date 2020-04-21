@@ -24,7 +24,7 @@ export const mutations = {
 }
 
 export const actions = {
-  setEvent({ commit, getters }, id) {
+  setEvent({ commit, getters, dispatch }, id) {
     var event = getters.getEventById(id)
 
     if (event) {
@@ -35,16 +35,41 @@ export const actions = {
           commit('SET_EVENT', resp.data)
         })
         .catch(error => {
-          console.log('Something went wrong', error.resp)
+          let notification = {
+            type: 'error',
+            message: 'Fetch event fail. Error message: ' + error.message
+          }
+
+          dispatch('notification/add', notification, { root: true })
+
+          throw error
         })
     }
   },
-  createEvent({ commit }, event) {
-    return EventService.createEvent(event).then(eventResp => {
-      commit('ADD_EVENT', eventResp)
+  createEvent({ commit, dispatch }, event) {
+    return EventService.createEvent(event)
+      .then(eventResp => {
+        commit('ADD_EVENT', eventResp)
 
-      return eventResp
-    })
+        let notification = {
+          type: 'success',
+          message: 'Create event success: ' + eventResp.title
+        }
+
+        dispatch('notification/add', notification, { root: true })
+
+        // return eventResp
+      })
+      .catch(error => {
+        let notification = {
+          type: 'error',
+          message: 'Create event fail. Error message: ' + error.message
+        }
+
+        dispatch('notification/add', notification, { root: true })
+
+        throw error
+      })
   },
   fetchEvents({ commit, dispatch, rootState }, { page, perPage }) {
     console.log('Fetching by', rootState.user.user.name)
@@ -59,15 +84,19 @@ export const actions = {
         commit('SET_EVENTS', response.data)
       })
       .catch(error => {
-        console.log('Something when wrong', error.response)
+        let notification = {
+          type: 'error',
+          message: 'Create event fail. Error message: ' + error.message
+        }
+
+        dispatch('notification/add', notification, { root: true })
+
+        throw error
       })
   }
 }
 
 export const getters = {
-  catLength: state => {
-    return state.categories.length
-  },
   doneEvents: state => {
     return state.events.filter(event => event.done)
   },

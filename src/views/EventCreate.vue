@@ -53,7 +53,9 @@ import { mapState } from 'vuex'
 import Datepicker from 'vuejs-datepicker'
 
 export default {
-  computed: mapState(['user', 'categories']),
+  computed: {
+    ...mapState(['categories'])
+  },
   data: function() {
     const times = []
     for (let i = 1; i <= 24; i++) {
@@ -70,19 +72,16 @@ export default {
   },
   methods: {
     createEvent() {
-      this.$store
-        .dispatch('createEvent', this.event)
-        .then(eventResp => {
-          this.event = this.createFreshEventObject()
+      this.$store.dispatch('event/createEvent', this.event).then(eventResp => {
+        this.event = this.createFreshEventObject()
 
-          this.$router.push({
-            name: 'event-show',
-            params: {
-              id: eventResp.id
-            }
-          })
+        this.$router.push({
+          name: 'event-show',
+          params: {
+            id: eventResp.id
+          }
         })
-        .catch(error => console.log('Error', error))
+      })
     },
     createFreshEventObject() {
       const user = this.$store.state.user
